@@ -780,6 +780,10 @@ h3.my-profession {
         display: hidden;
     }
 
+    .aside.open {
+        left: 0;
+    }
+
     .aside .nav-toggler {
         display: flex;
         left: 5%;
