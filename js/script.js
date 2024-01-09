@@ -11,23 +11,24 @@ const nav = document.querySelector(".nav"),
     totalNavlist = navList.length,
     allSection = document.querySelectorAll(".section"),
     totalSection = allSection.length;
-for (let i = 0; i < totalNavlist; i++)
- {
+for (let i = 0; i < totalNavlist; i++) {
     const a = navList[i].querySelector("a");
     a.addEventListener("click", function () {
-        for (let j = 0; j < totalNavlist; j++) 
-        {
+        for (let j = 0; j < totalNavlist; j++) {
             navList[j].querySelector("a").classList.remove("active")
         }
         this.classList.add("active")
         showSection(this);
+        if (window.innerWidth < 1200) {
+            asideSectionTogglerBtn();
+        }
     })
 
 }
 function showSection(element) {
     for (let i = 0; i < totalSection; i++) {
         allSection[i].classList.remove("active");
-    }  
+    }
     const target = element.getAttribute("href").split("#")[1];
     document.querySelector("#" + target).classList.add("active")
 }
@@ -39,4 +40,8 @@ navTogglerBtn.addEventListener("click", () => {
 })
 function asideSectionTogglerBtn() {
     aside.classList.toggle("open");
+    navTogglerBtn.classList.toggle("open");
+    for (let i = 0; i < totalSection; i++) {
+        allSection[i].classList.toggle("open");
+    }
 }
